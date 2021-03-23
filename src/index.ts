@@ -20,15 +20,16 @@ Esquare.addEventListener('mousedown', mdEV => {
     Esquare.style.zIndex = '1000';
 
     const handleMove = (moveEV: MouseEvent) => {
-        Esquare.style.left = moveEV.pageX + 'px';
-        Esquare.style.top = moveEV.pageY + 'px';
+        Esquare.style.left = (moveEV.pageX - Esquare.offsetWidth/2) + 'px';
+        Esquare.style.top = (moveEV.pageY - Esquare.offsetHeight/2) + 'px';
+
     };
 
     document.addEventListener('mousemove', handleMove);
 
-    Esquare.onmouseup = () => {
+    document.onmouseup = () => {
         document.removeEventListener('mousemove', handleMove);
-        Esquare.onmouseup = null;
+        document.onmouseup = null;
     };
 
 });
