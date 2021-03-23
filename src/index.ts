@@ -16,12 +16,15 @@ DOMBody.appendChild(Esquare);
 
 Esquare.addEventListener('mousedown', mdEV => {
 
+    const shiftX = mdEV.clientX - Esquare.getBoundingClientRect().left;
+    const shiftY = mdEV.clientY - Esquare.getBoundingClientRect().top;
+
     Esquare.style.position = 'absolute';
     Esquare.style.zIndex = '1000';
 
     const handleMove = (moveEV: MouseEvent) => {
-        Esquare.style.left = (moveEV.pageX - Esquare.offsetWidth/2) + 'px';
-        Esquare.style.top = (moveEV.pageY - Esquare.offsetHeight/2) + 'px';
+        Esquare.style.left = (moveEV.clientX - shiftX) + 'px';
+        Esquare.style.top = (moveEV.clientY - shiftY) + 'px';
 
     };
 
